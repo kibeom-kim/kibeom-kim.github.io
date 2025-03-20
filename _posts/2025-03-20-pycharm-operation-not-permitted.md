@@ -5,6 +5,8 @@ categories: [Pycharm, Error]
 tags: [Error]
 author: <kibeom>
 ---
+> 기존에 사용한 블로그에서 글을 옮겼습니다. 비슷한 내용을 발견하실 수도 있습니다.
+{: .prompt-info }
 
 ## 에러 확인
 며칠 전 새로운 프로젝트 세팅을 하던 도중 프로젝트 폴더가 깜박이듯 한 현상을 발견했다.
