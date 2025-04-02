@@ -1,6 +1,6 @@
 ---
 title: postman 환경 변수 사용하기
-date: 2025-04-02 14:00:00 +/-TTTT
+date: 2025-04-02 00:00:00 +/-TTTT
 categories: [TOOLS, postman]
 tags: [postman]
 author: <kibeom>
