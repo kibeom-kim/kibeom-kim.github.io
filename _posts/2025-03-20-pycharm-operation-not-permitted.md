@@ -1,7 +1,7 @@
 ---
 title: PyCharm - Operation not permitted
 date: 2025-03-20 00:00:00 +/-TTTT
-categories: [Pycharm, Error]
+categories: [IDE, Pycharm, Error]
 tags: [Error]
 author: <kibeom>
 ---

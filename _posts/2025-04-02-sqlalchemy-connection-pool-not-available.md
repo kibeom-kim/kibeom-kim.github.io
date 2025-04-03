@@ -1,7 +1,7 @@
 ---
 title: SQLAlchemy connection pool 설정을 통한 MySQL Connection not available 회피하기
 date: 2025-04-02 00:00:00 +/-TTTT
-categories: [SQLAlchemy, settings]
+categories: [ORM, SQLAlchemy, settings]
 tags: [sqlalchemy, connection, pool_pre_ping, pool_recycle]
 author: <kibeom>
 ---
