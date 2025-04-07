@@ -44,3 +44,18 @@ _환경 변수 설정하는 다른 방법_
 
 ![Desktop View](/assets/img/6/7.png){: width="900" height="250" }
 local 이라는 환경에서 새로 추가한 환경 변수를 확인할 수 있습니다.
+
+
+---
+
+<div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+  <p><strong>📰 이 블로그를 구독하고 싶다면?</strong></p>
+  <p>
+    이 블로그는 <strong>GitHub의 알림 시스템</strong>을 활용해 구독할 수 있어요.<br>
+    아래 버튼을 누르고 <strong>"Release only"로 Watching 설정</strong>을 하면,<br>
+    새 글이 올라올 때 GitHub 알림으로 받아볼 수 있어요.
+  </p>
+  <a href="https://github.com/kibeom-kim/kibeom-kim.github.io" target="_blank" style="display:inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #24292f; color: white; border-radius: 4px; text-decoration: none;">
+    🔔 GitHub에서 이 블로그 구독하기
+  </a>
+</div>

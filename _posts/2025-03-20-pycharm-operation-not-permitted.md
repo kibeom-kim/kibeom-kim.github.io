@@ -38,3 +38,17 @@ _로그는 여기에서 확인 가능하다._
 마지막으로 나와 비슷한 고민을 한 사람이 있는 것 같아 stack overflow에 답글도 달아주었다. 저 사람은 해결했을까?
 
 > [비슷한 문제를 겪은 것으로 보이는 stackoverflow 글](https://stackoverflow.com/questions/77699707/intellij-crashing-in-mac-apple-chip-with-operation-not-permitted/78098412#78098412)
+
+---
+
+<div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+  <p><strong>📰 이 블로그를 구독하고 싶다면?</strong></p>
+  <p>
+    이 블로그는 <strong>GitHub의 알림 시스템</strong>을 활용해 구독할 수 있어요.<br>
+    아래 버튼을 누르고 <strong>"Release only"로 Watching 설정</strong>을 하면,<br>
+    새 글이 올라올 때 GitHub 알림으로 받아볼 수 있어요.
+  </p>
+  <a href="https://github.com/kibeom-kim/kibeom-kim.github.io" target="_blank" style="display:inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #24292f; color: white; border-radius: 4px; text-decoration: none;">
+    🔔 GitHub에서 이 블로그 구독하기
+  </a>
+</div>
