@@ -1,6 +1,7 @@
 ---
 title: MySQL 8.0 계정의 비밀번호 변경하기
 date: 2025-04-02
+update: 2025-04-02
 tags: 
     - mysql
     - change password

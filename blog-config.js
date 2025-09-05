@@ -1,12 +1,12 @@
 module.exports = {
   title: "kibeom",
-  description: "Hello :) I'm a software engineer",
+  description: "",
   author: "kibeom",
   // siteUrl: "https://devhudi.github.io/gatsby-starter-hoodie/",
   siteUrl: "https://kibeom-kim.github.io/",
   links: {
     github: "https://github.com/kibeom-kim",
-    linkedIn: "https://linkedin.com",
+    linkedIn: "https://www.linkedin.com/in/kibeom-kim-2367a6153",
     // facebook: "https://www.facebook.com",
     // twitter: "https://twitter.com",
     // x: "https://x.com",
@@ -17,7 +17,7 @@ module.exports = {
     // resume: "https://hudi.blog",
     // link: "https://hudi.blog",
   },
-  useAbout: true,
+  useAbout: false,
   // See https://giscus.app/
   giscus: {
     repo: "kibeom-kim/kibeom-kim.github.io",
