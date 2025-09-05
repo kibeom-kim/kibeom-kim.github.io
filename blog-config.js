@@ -1,6 +1,6 @@
 module.exports = {
   title: "kibeom",
-  description: "",
+  description: "hello world :)",
   author: "kibeom",
   // siteUrl: "https://devhudi.github.io/gatsby-starter-hoodie/",
   siteUrl: "https://kibeom-kim.github.io/",
