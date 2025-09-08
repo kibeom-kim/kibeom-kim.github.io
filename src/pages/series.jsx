@@ -10,8 +10,10 @@ import Title from "components/Title"
 import SeriesList from "components/SeriesList"
 import VerticleSpace from "components/VerticalSpace"
 import NoContent from "components/NoContent"
+import Tab from "components/Tab"
+import Bio from "components/Bio"
 
-import { title, description, siteUrl } from "../../blog-config"
+import { title, description, siteUrl, useSeries } from "../../blog-config"
 
 const TagListWrapper = styled.div`
   margin-top: 20px;
@@ -36,9 +38,17 @@ const SeriesPage = ({ data }) => {
     reverse
   )(posts)
 
+  const postsCount = data.postsCount?.totalCount || 0
+  const seriesCount = series.length
+
+  if (!useSeries) return <NoContent name="series" />
+
   return (
     <Layout>
       <SEO title={title} description={description} url={siteUrl} />
+      <VerticleSpace size={48} />
+      <Bio />
+      <Tab postsCount={postsCount} seriesCount={seriesCount} activeTab="series" />
 
       <TagListWrapper>
         {series.length > 0 && (
@@ -85,6 +95,11 @@ export const pageQuery = graphql`
           series
         }
       }
+    }
+    postsCount: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
+    ) {
+      totalCount
     }
   }
 `

@@ -18,6 +18,7 @@ module.exports = {
     // link: "https://hudi.blog",
   },
   useAbout: false,
+  useSeries: true,
   // See https://giscus.app/
   giscus: {
     repo: "kibeom-kim/kibeom-kim.github.io",

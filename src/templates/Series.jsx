@@ -8,7 +8,7 @@ import SEO from "components/SEO"
 import PostList from "components/PostList"
 import Divider from "components/Divider"
 
-import { description, siteUrl } from "../../blog-config"
+import { description, siteUrl, useSeries } from "../../blog-config"
 
 const Header = styled.div`
   @media (max-width: 768px) {
@@ -56,6 +56,8 @@ const Date = styled.span`
 const Series = ({ pageContext, data }) => {
   const seriesName = pageContext.series
   const posts = data.posts.nodes
+
+  if (!useSeries) return null
 
   return (
     <Layout>

@@ -13,7 +13,7 @@ import NotFoundPage from "pages/404"
 
 import styled from "styled-components"
 
-import { title, description, siteUrl, useAbout } from "../../blog-config"
+import { title, description, siteUrl, useAbout, useSeries } from "../../blog-config"
 import Divider from "components/Divider"
 
 const ArticleTitle = styled.h1`
@@ -33,6 +33,13 @@ const Wrapper = styled.div`
 const BlogIndex = ({ data }) => {
   const aboutPost = data.markdownRemark
   const postsCount = data.allMarkdownRemark.totalCount
+  // 시리즈 개수 계산
+  const seriesCount = useSeries ? (() => {
+    const allPosts = data.allMarkdownRemark.nodes || []
+    const postsWithSeries = allPosts.filter(post => post.frontmatter.series)
+    const uniqueSeries = new Set(postsWithSeries.map(post => post.frontmatter.series))
+    return uniqueSeries.size
+  })() : 0
 
   if (!useAbout) return <NotFoundPage />
 
@@ -41,7 +48,7 @@ const BlogIndex = ({ data }) => {
       <SEO title={title} description={description} url={siteUrl} />
       <VerticalSpace size={48} />
       <Bio />
-      <Tab postsCount={postsCount} activeTab="about" />
+      <Tab postsCount={postsCount} seriesCount={seriesCount} activeTab="about" />
       <Article>
         <Wrapper>
           <ArticleTitle>{aboutPost.frontmatter.title}</ArticleTitle>
@@ -70,6 +77,11 @@ export const pageQuery = graphql`
       filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
     ) {
       totalCount
+      nodes {
+        frontmatter {
+          series
+        }
+      }
     }
   }
 `

@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 
 import Divider from "components/Divider"
 
-import { useAbout } from "../../../blog-config"
+import { useAbout, useSeries } from "../../../blog-config"
 
 const TabWrapper = styled.div`
   display: flex;
@@ -63,8 +63,11 @@ const Badge = styled.span`
   transition: all 0.2s;
 `
 
-const Tab = ({ postsCount, activeTab }) => {
-  if (!useAbout) return <Divider />
+const Tab = ({ postsCount, seriesCount, activeTab }) => {
+  // 둘 다 false인 경우에만 Divider 반환
+  if (!useAbout && !useSeries) {
+    return <Divider />
+  }
 
   return (
     <TabWrapper>
@@ -73,9 +76,18 @@ const Tab = ({ postsCount, activeTab }) => {
           POSTS <Badge>{postsCount}</Badge>
         </TabButton>
       </Link>
-      <Link to="/about">
-        <TabButton active={activeTab == "about"}>ABOUT</TabButton>
-      </Link>
+      {useSeries && (
+        <Link to="/series">
+          <TabButton active={activeTab == "series"}>
+            SERIES <Badge>{seriesCount}</Badge>
+          </TabButton>
+        </Link>
+      )}
+      {useAbout && (
+        <Link to="/about">
+          <TabButton active={activeTab == "about"}>ABOUT</TabButton>
+        </Link>
+      )}
     </TabWrapper>
   )
 }

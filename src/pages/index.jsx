@@ -10,11 +10,18 @@ import SideTagList from "components/SideTagList"
 import VerticalSpace from "components/VerticalSpace"
 import Tab from "components/Tab"
 
-import { title, description, siteUrl } from "../../blog-config"
+import { title, description, siteUrl, useSeries } from "../../blog-config"
 
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
   const tags = _.sortBy(data.allMarkdownRemark.group, ["totalCount"]).reverse()
+  
+  // 시리즈 개수 계산 - 시리즈가 있는 포스트들을 그룹화하여 개수 계산
+  const seriesCount = useSeries ? (() => {
+    const postsWithSeries = posts.filter(post => post.frontmatter.series)
+    const uniqueSeries = new Set(postsWithSeries.map(post => post.frontmatter.series))
+    return uniqueSeries.size
+  })() : 0
 
   if (posts.length === 0) {
     return (
@@ -31,7 +38,7 @@ const BlogIndex = ({ data }) => {
       <SEO title={title} description={description} url={siteUrl} />
       <VerticalSpace size={48} />
       <Bio />
-      <Tab postsCount={posts.length} activeTab="posts" />
+      <Tab postsCount={posts.length} seriesCount={seriesCount} activeTab="posts" />
       <SideTagList tags={tags} postCount={posts.length} />
       <PostList postList={posts} />
     </Layout>
@@ -65,6 +72,7 @@ export const pageQuery = graphql`
           update(formatString: "MMM DD, YYYY")
           title
           tags
+          series
         }
       }
     }
