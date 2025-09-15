@@ -5,7 +5,6 @@ update: 2025-09-08
 tags: 
     - MySQL
     - InnoDB
-series: "MySQL"
 ---
 
 # ACID란 무엇인가

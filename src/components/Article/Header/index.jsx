@@ -44,7 +44,7 @@ const Date = styled.span`
   color: ${props => props.theme.colors.secondaryText};
 `
 
-const Header = ({ title, date, tags, minToRead }) => {
+const Header = ({ title, date, update, tags, minToRead }) => {
   return (
     <Wrapper>
       <ArticleTitle> {title} </ArticleTitle>
@@ -52,7 +52,9 @@ const Header = ({ title, date, tags, minToRead }) => {
         <Author>
           <Link to="/about">@{author}</Link>
         </Author>
-        <Date>· {date} </Date>
+        <Date>
+          · {date} {date != update ? <Date> (updated: {update}) </Date> : <></>}{" "}
+        </Date>
         <Date>· {minToRead} min read </Date>
       </Information>
       {tags && <TagList tagList={tags} />}
