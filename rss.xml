@@ -1,4 +1,302 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of kibeom]]></title><description><![CDATA[hello world :)]]></description><link>https://kibeom-kim.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Nov 2026 08:27:32 GMT</lastBuildDate><item><title><![CDATA[InnoDB와 ACID]]></title><description><![CDATA[ACID란 무엇인가 ACID는 데이터베이스 신뢰성을 위한 네 가지 핵심 속성, 즉 Atomicity(원자성), Consistency(일관성), Isolation(격리성), Durability(지속성)을 말합니다. MySQL…]]></description><link>https://kibeom-kim.github.io/mysql-innodb-acid/</link><guid isPermaLink="false">https://kibeom-kim.github.io/mysql-innodb-acid/</guid><pubDate>Mon, 08 Sep 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;ACID란-무엇인가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ACID%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80&quot; aria-label=&quot;ACID란 무엇인가 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;ACID란 무엇인가&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of kibeom]]></title><description><![CDATA[hello world :)]]></description><link>https://kibeom-kim.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Nov 2026 08:41:50 GMT</lastBuildDate><item><title><![CDATA[HTTP와 HTTPS의 차이]]></title><description><![CDATA[웹 브라우저에서 서버로 API 요청을 보내거나 웹 페이지에 접근할 때 HTTP 또는 HTTPS…]]></description><link>https://kibeom-kim.github.io/http-https/</link><guid isPermaLink="false">https://kibeom-kim.github.io/http-https/</guid><pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 브라우저에서 서버로 API 요청을 보내거나 웹 페이지에 접근할 때 HTTP 또는 HTTPS 프로토콜을 사용한다.&lt;/p&gt;
+&lt;p&gt;두 프로토콜 모두 클라이언트와 서버 사이에서 데이터를 주고받기 위해 사용되지만, 통신 과정에서 데이터를 보호하는 방식에 중요한 차이가 있다.&lt;/p&gt;
+&lt;p&gt;일반적으로 HTTPS는 HTTP에 보안 기능을 추가한 프로토콜이라고 설명한다. 하지만 실제로는 TLS(Transport Layer Security)를 통해 통신 상대를 인증하고, 암호화에 필요한 키를 협상하며, 데이터의 기밀성과 무결성을 보호한다.&lt;/p&gt;
+&lt;p&gt;이번 글에서는 HTTP와 HTTPS의 특징을 각각 살펴보고, 실제 통신 과정에서 어떤 차이가 발생하는지 알아본다.&lt;/p&gt;
+&lt;h2 id=&quot;1-HTTP란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-HTTP%EB%9E%80&quot; aria-label=&quot;1 HTTP란 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;1. HTTP란?&lt;/h2&gt;
+&lt;p&gt;HTTP(Hypertext Transfer Protocol)는 클라이언트와 서버 사이에서 데이터를 주고받기 위한 애플리케이션 계층 프로토콜이다.&lt;/p&gt;
+&lt;p&gt;초기에는 HTML 문서를 전송하기 위해 설계되었지만, 현재는 JSON, 이미지, 동영상 등 다양한 데이터를 전달하는 데 사용된다.&lt;/p&gt;
+&lt;h3 id=&quot;HTTP의-주요-특징&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#HTTP%EC%9D%98-%EC%A3%BC%EC%9A%94-%ED%8A%B9%EC%A7%95&quot; aria-label=&quot;HTTP의 주요 특징 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;HTTP의 주요 특징&lt;/h3&gt;
+&lt;h3 id=&quot;1-요청과-응답-기반의-통신&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%9A%94%EC%B2%AD%EA%B3%BC-%EC%9D%91%EB%8B%B5-%EA%B8%B0%EB%B0%98%EC%9D%98-%ED%86%B5%EC%8B%A0&quot; aria-label=&quot;1 요청과 응답 기반의 통신 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;1. 요청과 응답 기반의 통신&lt;/h3&gt;
+&lt;p&gt;HTTP는 클라이언트가 서버에 요청(Request)을 보내면 서버가 이에 대한 응답(Response)을 반환하는 구조다.&lt;/p&gt;
+&lt;p&gt;예를 들어 클라이언트가 사용자 정보를 요청하면 다음과 같은 통신이 발생한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;plain&quot;&gt;&lt;pre class=&quot;language-plain&quot;&gt;&lt;code class=&quot;language-plain&quot;&gt;GET /api/users/1 HTTP/1.1
+Host: example.com
+Accept: application/json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;서버는 요청을 처리한 뒤 응답을 반환한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;plain&quot;&gt;&lt;pre class=&quot;language-plain&quot;&gt;&lt;code class=&quot;language-plain&quot;&gt;HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Kim&quot;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;HTTP는 요청 메서드(GET, POST, PUT, PATCH, DELETE 등), 상태 코드(200, 404, 500 등), 헤더 등을 정의하여 클라이언트와 서버가 일관된 방식으로 통신할 수 있도록 한다.&lt;/p&gt;
+&lt;h3 id=&quot;2-Stateless무상태성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-Stateless%EB%AC%B4%EC%83%81%ED%83%9C%EC%84%B1&quot; aria-label=&quot;2 Stateless무상태성 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;2. Stateless(무상태성)&lt;/h3&gt;
+&lt;p&gt;HTTP는 기본적으로 무상태 프로토콜이다.&lt;/p&gt;
+&lt;p&gt;서버는 각 HTTP 요청을 독립적으로 처리하며, 프로토콜 자체가 이전 요청의 사용자 상태를 자동으로 기억하지 않는다.&lt;/p&gt;
+&lt;p&gt;예를 들어 사용자가 로그인한 이후 다른 API를 호출하더라도 HTTP 자체만으로는 해당 사용자가 로그인했는지 알 수 없다.&lt;/p&gt;
+&lt;p&gt;따라서 애플리케이션에서는 쿠키, 세션, JWT 등을 이용하여 사용자 인증 상태를 관리한다.&lt;/p&gt;
+&lt;p&gt;여기서 Stateless는 TCP 연결을 매번 종료한다는 의미가 아니다. HTTP의 무상태성과 TCP 연결의 재사용은 서로 다른 개념이다.&lt;/p&gt;
+&lt;h3 id=&quot;3-Connection-재사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-Connection-%EC%9E%AC%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;3 Connection 재사용 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;3. Connection 재사용&lt;/h3&gt;
+&lt;p&gt;HTTP/1.0에서는 일반적으로 요청마다 새로운 TCP 연결을 생성했지만, HTTP/1.1부터는 지속 연결(Persistent Connection)이 기본 동작이 되었다.&lt;/p&gt;
+&lt;p&gt;이를 통해 여러 HTTP 요청이 동일한 TCP 연결을 재사용할 수 있다.
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/c70d004a6db8fb01dc2babf393459099/e4ca2/1.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 91.1764705882353%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAClklEQVR42m1TO28TQRD2f+QX0FJDTwclDQWiooEGmoAiUBSSWKAoD3Bizj7HMSSxz/b53nv7fh5zvtgxEavVPmbm2++b3Z0WE0YbR5hIM5RmJRNKGQtdr0boEkbrCJVhhKZhniNqrANgi0tTVdXFn9n3Qbp7Fo5nCWyttW6jGVPHdLq/Hz1+/eDhs7cfvsKWcXUL3j8evtr2X255HX8MW3MfbME4GE6ev9h68vTN9s5RDRa6JRXIrk5v+Lud8/cHA2+uG4DdaI0lHJv23uhgdzjymdGV0qYlISfnEurGCQuRKoSrqjq02mjLrWPYZbEI57TIa2VLsDLVMpRxIaVWSk9y1w3458P+l6PBx3b3U/u8c0Ouskpog5nEhDXHAWsLLncpqsKEp0ggIq8z+3Mi2t3gWy/c7wZ7nZvTKzJKHCIqzhkqKQQDQK3BcBYFamWldlzZGLJIxeWsuE5YUKgFcUzCyznCLXA0zP+ACeUZNTmzObVB4fqT8mwUH/eD7lUGiYALcTsvdIFvZQOwzrm5HlxSkghNtcSaxBpHZtSbDn8FKFQ4qo2KwKgoZXfMazChrCQahBFmMbVJxpKURAlOc4apASN0RDRegeUG84ZsZi9T0+5NDy/Cthfse4EfqQyQ3M5AdvkfcC0bJ0KUiiOFUp1F6tKfD7wgngmUGIZqOy0kvcfcvDOB4mDwi51WlpeOlTZZkDjEDBlYg9Ho2gWP0vyiGixWYLBKKZVSjPMojr2+7/V8/2IIi+l8zqAOwMU4JvSOeQ2GCytKDL40y2fzqO+PTn6cH52ceb1hMF3ESU4ojZMMIbwhG8qiWuaMCdTA6i+71ezWY1OqJSZNTP1UmGk4A/i50EKapjcWqe4WK5euw5YWwvVfbQX833bjLvEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;1&apos; title=&apos;&apos; src=&apos;/static/c70d004a6db8fb01dc2babf393459099/ca1dc/1.png&apos; srcset=&apos;/static/c70d004a6db8fb01dc2babf393459099/e7570/1.png 170w,
+/static/c70d004a6db8fb01dc2babf393459099/f46e7/1.png 340w,
+/static/c70d004a6db8fb01dc2babf393459099/ca1dc/1.png 680w,
+/static/c70d004a6db8fb01dc2babf393459099/02d09/1.png 1020w,
+/static/c70d004a6db8fb01dc2babf393459099/e4ca2/1.png 1312w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;연결을 재사용하면 매 요청마다 TCP 핸드셰이크를 수행할 필요가 없어 네트워크 오버헤드를 줄일 수 있다.&lt;/p&gt;
+&lt;p&gt;다만 HTTP/1.1에서는 하나의 연결에서 요청과 응답을 처리하는 방식에 제약이 있어 HTTP/2의 멀티플렉싱이 등장하게 되었다.&lt;/p&gt;
+&lt;h3 id=&quot;4-암호화되지-않은-평문-통신&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-%EC%95%94%ED%98%B8%ED%99%94%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%80-%ED%8F%89%EB%AC%B8-%ED%86%B5%EC%8B%A0&quot; aria-label=&quot;4 암호화되지 않은 평문 통신 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;4. 암호화되지 않은 평문 통신&lt;/h3&gt;
+&lt;p&gt;일반적인 HTTP 통신은 데이터를 암호화하지 않고 전송한다.&lt;/p&gt;
+&lt;p&gt;따라서 네트워크 경로에서 패킷을 관찰할 수 있는 공격자는 HTTP 요청과 응답의 내용을 확인하거나 변조할 수 있다. (&lt;a href=&quot;https://en.wikipedia.org/wiki/Man-in-the-middle_attack&quot;&gt;Man in the middle attack&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;예를 들어 다음과 같은 로그인 요청이 있다고 가정하자.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;plain&quot;&gt;&lt;pre class=&quot;language-plain&quot;&gt;&lt;code class=&quot;language-plain&quot;&gt;POST /login HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+  &quot;username&quot;: &quot;admin&quot;,
+  &quot;password&quot;: &quot;123456&quot;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;HTTP를 사용한다면 요청 본문에 포함된 사용자 계정과 비밀번호가 네트워크에서 평문으로 전달된다.&lt;/p&gt;
+&lt;p&gt;이는 HTTP가 가진 대표적인 보안 문제다.&lt;/p&gt;
+&lt;h2 id=&quot;2-HTTPS란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-HTTPS%EB%9E%80&quot; aria-label=&quot;2 HTTPS란 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;2. HTTPS란?&lt;/h2&gt;
+&lt;p&gt;HTTPS(Hypertext Transfer Protocol Secure)는 HTTP 통신을 TLS로 보호하는 방식이다.&lt;/p&gt;
+&lt;p&gt;HTTP의 요청·응답 구조, 메서드, 상태 코드 등은 그대로 사용하면서 TLS를 통해 데이터 전송 구간의 보안을 제공한다.&lt;/p&gt;
+&lt;p&gt;HTTPS가 제공하는 핵심 보안 기능은 세 가지다.&lt;/p&gt;
+&lt;h3 id=&quot;1-기밀성Confidentiality&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EA%B8%B0%EB%B0%80%EC%84%B1Confidentiality&quot; aria-label=&quot;1 기밀성Confidentiality permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;1. 기밀성(Confidentiality)&lt;/h3&gt;
+&lt;p&gt;클라이언트와 서버가 주고받는 데이터를 암호화하여 제3자가 내용을 확인하기 어렵게 한다.&lt;/p&gt;
+&lt;p&gt;예를 들어 로그인 요청에 비밀번호가 포함되어 있더라도 TLS로 암호화된 네트워크 패킷만 관찰해서는 원래 데이터를 쉽게 알아낼 수 없다.&lt;/p&gt;
+&lt;h3 id=&quot;2-무결성Integrity&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EB%AC%B4%EA%B2%B0%EC%84%B1Integrity&quot; aria-label=&quot;2 무결성Integrity permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;2. 무결성(Integrity)&lt;/h3&gt;
+&lt;p&gt;통신 과정에서 데이터가 변경되었는지 검증한다.&lt;/p&gt;
+&lt;p&gt;공격자가 암호화된 데이터를 임의로 수정하더라도 TLS의 인증 암호화 메커니즘을 통해 변조를 탐지할 수 있다.&lt;/p&gt;
+&lt;h3 id=&quot;3-인증Authentication&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EC%9D%B8%EC%A6%9DAuthentication&quot; aria-label=&quot;3 인증Authentication permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;3. 인증(Authentication)&lt;/h3&gt;
+&lt;p&gt;클라이언트는 서버가 제시한 TLS 인증서를 검증하여 접속하려는 서버의 신원을 확인한다.&lt;/p&gt;
+&lt;p&gt;일반적인 HTTPS에서는 서버 인증이 기본이며, 필요에 따라 클라이언트 인증서를 사용하는 mTLS(Mutual TLS)를 구성할 수도 있다.&lt;/p&gt;
+&lt;p&gt;단, 유효한 인증서가 있다고 해서 해당 웹사이트의 운영자가 반드시 신뢰할 만하다는 뜻은 아니다. 인증서는 주로 접속한 도메인과 서버의 인증 관계를 검증하는 역할을 한다.&lt;/p&gt;
+&lt;h2 id=&quot;3-HTTP와-HTTPS의-차이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-HTTP%EC%99%80-HTTPS%EC%9D%98-%EC%B0%A8%EC%9D%B4&quot; aria-label=&quot;3 HTTP와 HTTPS의 차이 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;3. HTTP와 HTTPS의 차이&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;구분&lt;/th&gt;
+&lt;th&gt;HTTP&lt;/th&gt;
+&lt;th&gt;HTTPS&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;기본 목적&lt;/td&gt;
+&lt;td&gt;데이터 요청 및 응답&lt;/td&gt;
+&lt;td&gt;TLS로 보호되는 HTTP 통신&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;기본 포트&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;443&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;암호화&lt;/td&gt;
+&lt;td&gt;기본적으로 없음&lt;/td&gt;
+&lt;td&gt;TLS 암호화&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;데이터 무결성&lt;/td&gt;
+&lt;td&gt;네트워크 공격에 대한 암호학적 보호 없음&lt;/td&gt;
+&lt;td&gt;TLS로 변조 탐지&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;서버 인증&lt;/td&gt;
+&lt;td&gt;기본 제공하지 않음&lt;/td&gt;
+&lt;td&gt;인증서 기반 서버 인증&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;전송 프로토콜&lt;/td&gt;
+&lt;td&gt;HTTP/1.1·2는 주로 TCP, HTTP/3는 QUIC&lt;/td&gt;
+&lt;td&gt;HTTP/1.1·2는 TLS over TCP, HTTP/3는 QUIC 내 TLS 1.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;연결 과정&lt;/td&gt;
+&lt;td&gt;TCP 연결 등&lt;/td&gt;
+&lt;td&gt;전송 연결 및 TLS 핸드셰이크&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;주요 사용처&lt;/td&gt;
+&lt;td&gt;내부 테스트, 제한된 환경&lt;/td&gt;
+&lt;td&gt;웹사이트, API, 인증 및 결제 서비스&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;핵심 차이는 HTTP 메시지를 전송할 때 TLS를 통해 통신을 보호하는지 여부다.&lt;/p&gt;
+&lt;p&gt;HTTP와 HTTPS는 서로 완전히 다른 애플리케이션 프로토콜이 아니다. HTTPS에서도 동일한 HTTP 메서드와 상태 코드를 사용한다.&lt;/p&gt;
+&lt;h2 id=&quot;4-HTTP와-HTTPS의-통신-과정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-HTTP%EC%99%80-HTTPS%EC%9D%98-%ED%86%B5%EC%8B%A0-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;4 HTTP와 HTTPS의 통신 과정 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;4. HTTP와 HTTPS의 통신 과정&lt;/h2&gt;
+&lt;p&gt;HTTP와 HTTPS의 차이를 더 명확하게 이해하기 위해 각각의 연결 과정을 비교해 보자.&lt;/p&gt;
+&lt;h4 id=&quot;HTTP-통신-과정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#HTTP-%ED%86%B5%EC%8B%A0-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;HTTP 통신 과정 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;HTTP 통신 과정&lt;/h4&gt;
+&lt;p&gt;HTTP/1.1을 TCP 위에서 사용하는 경우 다음과 같은 순서로 통신이 이루어진다.
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/4936045039a92e3cf521bae567671e9a/e8464/2.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 66.47058823529413%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACEElEQVR42m1STW8TMRTMb0cIgajKAQFCXDmgil44IVEhUNqGlKpEar6arPLVtEn2y7HXXnttP5vnTVRRidXsk72esd+OpyGU1QYqXcO4Gvb0onvS7PxsXX8/7Zw0/zTb3T0nrO7JQkFDVeCdc+DAQiWVAyi4Onj3+cnhx5dvj169P37x5uj560+skN55a6yzgezBobAhKwCceJ9k9GocrzMmK5MSnm55nNKcimwr7jeEl9Uount6eHx+2UeytfAgBpxfT9MPX4ftmw2OcXMsvh7VJdR+f/Xs4MtZa/xIjG0gVtRejjaTRCIRt8NlrY0x1hiwJnBIYqJhFq/wNO8e2saNLSCAl6rUUCiXCVhSN7glvVk2Jy4uoJCWCEN5hX1AfVgQ4ys1tAebwZykRBRES24Fg/tlEY1ixHxCGQFRGE5NwST6uhPLvbiyo1syX7OclUzYooS8gLvc9iZpN0pmsU0ohI/MEqbCvdQI4lLBzhV80NKyAqUdlW6Rqt406c2SSaLy0iOVK2CitveR2PvFmk6WhBQSGUK5mPurKf3RmX37HV1EZMU8V/jPsP3Pyd5HS3KzyPNtWTKjpRVbmIzor/Nx62w07GY0A3RSCVNirP4Vyzphu845l1qZOmrAiNms2Gq5zZNKCmd1uDAhgmEhYa4W4x1gUGWwDUplUFvV0BYs5tF5DWGqQrBrgoYduLR/ATvD3g+6CwubAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;2&apos; title=&apos;&apos; src=&apos;/static/4936045039a92e3cf521bae567671e9a/ca1dc/2.png&apos; srcset=&apos;/static/4936045039a92e3cf521bae567671e9a/e7570/2.png 170w,
+/static/4936045039a92e3cf521bae567671e9a/f46e7/2.png 340w,
+/static/4936045039a92e3cf521bae567671e9a/ca1dc/2.png 680w,
+/static/4936045039a92e3cf521bae567671e9a/02d09/2.png 1020w,
+/static/4936045039a92e3cf521bae567671e9a/9d567/2.png 1360w,
+/static/4936045039a92e3cf521bae567671e9a/e8464/2.png 1536w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;TCP 3-way handshake를 통해 연결이 수립되면 HTTP 요청을 전송할 수 있다.&lt;/p&gt;
+&lt;p&gt;TCP는 데이터의 신뢰성 있는 전달과 순서 보장을 담당하지만, 전송되는 데이터 자체를 암호화하지는 않는다.&lt;/p&gt;
+&lt;h4 id=&quot;HTTPS-통신-과정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#HTTPS-%ED%86%B5%EC%8B%A0-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;HTTPS 통신 과정 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;HTTPS 통신 과정&lt;/h4&gt;
+&lt;p&gt;HTTPS에서는 TCP 연결 이후 TLS 핸드셰이크가 추가된다.&lt;/p&gt;
+&lt;p&gt;다음은 TLS 1.3을 사용하는 일반적인 HTTPS 연결의 개념적인 흐름이다.
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/e1c762623d79d2aa51df9ba0844a0484/e8464/3.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 66.47058823529413%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACKklEQVR42lWSy2/TQBCH+39zQUICCVClHkCIAxISEuJxijgjJEiTlNZN7LzkpG6alCRO4qzX+36acdK0sBrvYWa+mf2N50hqZ6wH08aVZRn1k8cv3h+/+fr81SewJ8cfnp18fPn686On76LBBBKUtvt8qf0RMM5570utTat3G43mUW98GY2iQQKFwt4Y7iAcdQdJvdk/efstQxhKOOu02cOAlp5IW6uP2skGYuBwEHcWjjG6ql2W11dZrRZgpCrYHWC/O9Z5IXVBBeM8L+hijc6CqN4KJrMFwpRzzqjkXDm7y3aVzAfYO8eIzIkBW2F3ndJgMD29jK8WxTK34NzkUFqW3h3gXWd4pmQWLRXFihWaE4szl8TrTjtpNnrxYJmvHS0MxUZwfei0g9VuyKPh4tePfrGVghrFbJHZ0XAdnMeNetgLb/KVFcRASAp1eOVD53I2W4edcZ6BMkepzZFPl7J5Njht9ifXCG1LQiwYaP6n873msvoYU1hYzG1K7NWKNMP450W/d7NZEo+5QdQWTJV39P8Dq5RLJRiTmmVi1U3b4Tg8DRqtztmSzJkiSgiY+V3f+86A5VRP17xgmilPlb/F5mKybXbH58NpJ0mnSBfSFdwTrmHabrdWFbwf2GW8+vJ9uEKCFYZTmy5sN0St33EY3Ybd+XwuKWguNOjy+1/lXQXDbsMqMWEwVZhKpazWjmK7TeWf2SZdYJRJkhslHfi5UMCYajedUO4v1aDUo2I1CjIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;3&apos; title=&apos;&apos; src=&apos;/static/e1c762623d79d2aa51df9ba0844a0484/ca1dc/3.png&apos; srcset=&apos;/static/e1c762623d79d2aa51df9ba0844a0484/e7570/3.png 170w,
+/static/e1c762623d79d2aa51df9ba0844a0484/f46e7/3.png 340w,
+/static/e1c762623d79d2aa51df9ba0844a0484/ca1dc/3.png 680w,
+/static/e1c762623d79d2aa51df9ba0844a0484/02d09/3.png 1020w,
+/static/e1c762623d79d2aa51df9ba0844a0484/9d567/3.png 1360w,
+/static/e1c762623d79d2aa51df9ba0844a0484/e8464/3.png 1536w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;TLS 핸드셰이크 과정에서 클라이언트와 서버는 암호화에 사용할 키를 협상하고 서버 인증서를 검증한다.&lt;/p&gt;
+&lt;p&gt;TLS 1.3에서는 일반적인 전체 핸드셰이크에 1 RTT가 필요하다. TLS 1.2에서는 일반적인 전체 핸드셰이크에 2 RTT가 필요했기 때문에 연결 수립 지연이 개선되었다.&lt;/p&gt;
+&lt;p&gt;여기서 RTT(Round Trip Time)는 클라이언트에서 서버로 데이터를 보내고 그에 대한 응답이 돌아오는 데 걸리는 시간을 의미한다.&lt;/p&gt;
+&lt;h2 id=&quot;5-HTTPS는-어떻게-데이터를-암호화할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-HTTPS%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EC%95%94%ED%98%B8%ED%99%94%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;5 HTTPS는 어떻게 데이터를 암호화할까 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;5. HTTPS는 어떻게 데이터를 암호화할까?&lt;/h2&gt;
+&lt;p&gt;HTTPS의 핵심은 TLS이며, TLS에서는 비대칭키 암호화와 대칭키 암호화의 원리를 함께 활용한다.&lt;/p&gt;
+&lt;h4 id=&quot;대칭키-암호화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94&quot; aria-label=&quot;대칭키 암호화 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;대칭키 암호화&lt;/h4&gt;
+&lt;p&gt;대칭키 암호화는 암호화와 복호화에 동일한 비밀키를 사용하는 방식이다.&lt;/p&gt;
+&lt;p&gt;대표적인 알고리즘으로 AES가 있다.
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/12c5c4536901b5241e45f160a4e95b64/6d3ba/4.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxklEQVR42lWQSW/UQBCF5yfzB7jBGZRryCFCLEJIQBRAEQc2KTaDFeSExIzJDHbGY894wVvvK9UWByhZpVbXe35f9YwKI5QR0khloQulrbVnF8uDJyfPjz8/O/q0/+htEMZwKaSW0sBcTnrKzQyurDFaayUlHPqBZNvm+N387v2new9e7h28unPv8dGJX1R9P1JjDKVcgNI6/4xLF3V9U30I89/tIISqWzRSQgUnjIOSCTFgWrUjZCY3u1u3D1+88cBCuZ5x4cwfL/L912FaYW2FNuKyOvMXXhAHfuT7kXeVfWcKRrzYjIcPTz0vcWahHTbAIK47atJd+zNNiroVSkkFEBI+CV1KTORynZQNwsgyAmsaBmY+7WyNBqqsaKLVJtlWQsFSrqyBg3uhjogoycoBA5i1Lu+veZIZxIy3ou/D9TyusHsR+B2UG0lhkoh++5qHQY7HKUr/b8bczH+h06vtedISMDseFwxNKZsuyHlYxlGNR6f/B3viVtx2BQ38RZ0xgkTbox/X63iVNe3QIZqP8stlsqzIBOWKST0bqSJcYaZGrLYl3RTjrqQDkgPmTU+anvaYd1huGp7uhnVNO6wIc/qBqD/fPS2DJPdTywAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;4&apos; title=&apos;&apos; src=&apos;/static/12c5c4536901b5241e45f160a4e95b64/ca1dc/4.png&apos; srcset=&apos;/static/12c5c4536901b5241e45f160a4e95b64/e7570/4.png 170w,
+/static/12c5c4536901b5241e45f160a4e95b64/f46e7/4.png 340w,
+/static/12c5c4536901b5241e45f160a4e95b64/ca1dc/4.png 680w,
+/static/12c5c4536901b5241e45f160a4e95b64/02d09/4.png 1020w,
+/static/12c5c4536901b5241e45f160a4e95b64/9d567/4.png 1360w,
+/static/12c5c4536901b5241e45f160a4e95b64/6d3ba/4.png 1774w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;대칭키 암호화는 일반적으로 비대칭키 연산보다 빠르기 때문에 실제 HTTP 데이터를 암호화하는 데 사용된다.&lt;/p&gt;
+&lt;p&gt;다만 통신 당사자가 안전하게 비밀키를 공유해야 한다는 문제가 있다.&lt;/p&gt;
+&lt;h4 id=&quot;비대칭키-암호화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94&quot; aria-label=&quot;비대칭키 암호화 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;비대칭키 암호화&lt;/h4&gt;
+&lt;p&gt;비대칭키 암호화는 공개키(Public Key)와 개인키(Private Key)를 사용하는 방식이다.&lt;/p&gt;
+&lt;p&gt;공개키는 외부에 공개할 수 있지만, 개인키는 소유자만 안전하게 보관해야 한다.&lt;/p&gt;
+&lt;p&gt;비대칭키 암호 기술은 암호화뿐 아니라 디지털 서명과 키 교환 과정에도 활용된다.&lt;/p&gt;
+&lt;p&gt;다만 TLS 1.3에서는 서버의 공개키로 대칭키를 암호화해 전달하는 방식이 아니라, 주로 (EC)DHE 키 교환을 통해 공유 비밀을 생성한다.&lt;/p&gt;
+&lt;p&gt;TLS 1.3의 키 교환 과정을 간단히 살펴보자.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;클라이언트와 서버가 각각 임시 키 쌍을 생성한다.&lt;/li&gt;
+&lt;li&gt;서로의 공개 키 교환 정보를 전달한다.&lt;/li&gt;
+&lt;li&gt;각자의 개인키와 상대방의 공개 키 정보를 이용하여 공유 비밀을 계산한다.&lt;/li&gt;
+&lt;li&gt;HKDF 기반 키 파생 과정을 통해 실제 통신에 사용할 대칭키를 생성한다.&lt;/li&gt;
+&lt;li&gt;이후 HTTP 데이터를 대칭키 기반 인증 암호화 방식으로 보호한다.
+이 과정에서는 서버의 인증서와 디지털 서명을 이용해 키 교환 상대를 인증한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;또한 임시 키 교환을 사용하기 때문에 서버의 장기 개인키가 나중에 유출되더라도 과거에 수집된 통신 내용을 쉽게 복호화할 수 없도록 하는 &lt;strong&gt;전방향 비밀성(Forward Secrecy)&lt;/strong&gt;을 제공한다.&lt;/p&gt;
+&lt;h2 id=&quot;6-SSLTLS-인증서는-어떤-역할을-할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-SSLTLS-%EC%9D%B8%EC%A6%9D%EC%84%9C%EB%8A%94-%EC%96%B4%EB%96%A4-%EC%97%AD%ED%95%A0%EC%9D%84-%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;6 SSLTLS 인증서는 어떤 역할을 할까 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;6. SSL/TLS 인증서는 어떤 역할을 할까?&lt;/h2&gt;
+&lt;p&gt;HTTPS에서는 서버의 신원을 검증하기 위해 TLS 인증서를 사용한다.&lt;/p&gt;
+&lt;p&gt;인증서에는 일반적으로 다음과 같은 정보가 포함된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;인증서가 유효한 도메인&lt;/li&gt;
+&lt;li&gt;서버의 공개키&lt;/li&gt;
+&lt;li&gt;인증서 발급자(Issuer)&lt;/li&gt;
+&lt;li&gt;인증서 유효 기간&lt;/li&gt;
+&lt;li&gt;인증 기관의 디지털 서명&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;브라우저는 서버가 전달한 인증서를 검증할 때 인증서의 신뢰 체인, 도메인 일치 여부, 유효 기간 등을 확인한다. 인증서 폐기 상태도 클라이언트 정책과 지원 기능에 따라 확인할 수 있다.&lt;/p&gt;
+&lt;p&gt;인증 기관(CA, Certificate Authority)은 이러한 인증서를 발급하고 서명하는 역할을 한다.&lt;/p&gt;
+&lt;p&gt;여기서 인증서는 암호화에 사용할 비밀키 자체를 전달하는 것이 아니라, 공개키와 서버의 신원을 연결하고 이를 검증할 수 있도록 하는 수단이라는 점이 중요하다.&lt;/p&gt;
+&lt;h2 id=&quot;7-HTTPS는-HTTP보다-느릴까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#7-HTTPS%EB%8A%94-HTTP%EB%B3%B4%EB%8B%A4-%EB%8A%90%EB%A6%B4%EA%B9%8C&quot; aria-label=&quot;7 HTTPS는 HTTP보다 느릴까 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;7. HTTPS는 HTTP보다 느릴까?&lt;/h2&gt;
+&lt;p&gt;HTTPS는 TLS 핸드셰이크와 암호화·복호화 연산이 필요하므로 HTTP보다 추가적인 비용이 발생할 수 있다.&lt;/p&gt;
+&lt;p&gt;하지만 HTTPS가 반드시 체감상 더 느리다고 볼 수는 없다.&lt;/p&gt;
+&lt;p&gt;그 이유는 다음과 같다.&lt;/p&gt;
+&lt;h3 id=&quot;첫째-연결을-재사용할-수-있다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B2%AB%EC%A7%B8-%EC%97%B0%EA%B2%B0%EC%9D%84-%EC%9E%AC%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8B%A4&quot; aria-label=&quot;첫째 연결을 재사용할 수 있다 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;첫째, 연결을 재사용할 수 있다.&lt;/h3&gt;
+&lt;p&gt;HTTP Keep-Alive와 커넥션 풀을 사용하면 매 요청마다 TCP 및 TLS 핸드셰이크를 수행하지 않아도 된다.&lt;/p&gt;
+&lt;h3 id=&quot;둘째-TLS-13에서는-핸드셰이크-비용이-개선되었다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%91%98%EC%A7%B8-TLS-13%EC%97%90%EC%84%9C%EB%8A%94-%ED%95%B8%EB%93%9C%EC%85%B0%EC%9D%B4%ED%81%AC-%EB%B9%84%EC%9A%A9%EC%9D%B4-%EA%B0%9C%EC%84%A0%EB%90%98%EC%97%88%EB%8B%A4&quot; aria-label=&quot;둘째 TLS 13에서는 핸드셰이크 비용이 개선되었다 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;둘째, TLS 1.3에서는 핸드셰이크 비용이 개선되었다.&lt;/h3&gt;
+&lt;p&gt;일반적인 전체 핸드셰이크가 1 RTT로 완료되며, 조건이 충족되면 세션 재개와 0-RTT 데이터 전송도 가능하다.&lt;/p&gt;
+&lt;p&gt;다만 0-RTT 데이터는 재전송 공격(Replay Attack)에 대한 고려가 필요하다.&lt;/p&gt;
+&lt;h3 id=&quot;셋째-HTTP2와-HTTP3를-활용할-수-있다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%85%8B%EC%A7%B8-HTTP2%EC%99%80-HTTP3%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8B%A4&quot; aria-label=&quot;셋째 HTTP2와 HTTP3를 활용할 수 있다 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;셋째, HTTP/2와 HTTP/3를 활용할 수 있다.&lt;/h3&gt;
+&lt;p&gt;HTTP/2는 하나의 연결에서 여러 요청과 응답을 동시에 처리하는 멀티플렉싱을 지원한다.&lt;/p&gt;
+&lt;p&gt;HTTP/3는 QUIC을 기반으로 동작하며 TCP 수준의 HOL(Head-of-Line) Blocking 문제를 완화한다.&lt;/p&gt;
+&lt;p&gt;따라서 실제 서비스 성능은 TLS 암호화 비용뿐 아니라 연결 재사용, 네트워크 지연, HTTP 버전, 서버 구성 등에 따라 달라진다.&lt;/p&gt;
+&lt;h2 id=&quot;8-HTTP11-HTTP2-HTTP3와-HTTPS의-관계&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#8-HTTP11-HTTP2-HTTP3%EC%99%80-HTTPS%EC%9D%98-%EA%B4%80%EA%B3%84&quot; aria-label=&quot;8 HTTP11 HTTP2 HTTP3와 HTTPS의 관계 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;8. HTTP/1.1, HTTP/2, HTTP/3와 HTTPS의 관계&lt;/h2&gt;
+&lt;p&gt;HTTP 버전과 HTTPS는 서로 다른 기준의 개념이다.&lt;/p&gt;
+&lt;p&gt;HTTP 버전은 메시지 전송 방식과 연결 처리 구조를 정의하며, HTTPS는 HTTP 통신을 안전하게 보호하는 방식이다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;구분&lt;/th&gt;
+&lt;th&gt;HTTP/1.1&lt;/th&gt;
+&lt;th&gt;HTTP/2&lt;/th&gt;
+&lt;th&gt;HTTP/3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;주요 전송 기반&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;QUIC(UDP 기반)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;메시지 형식&lt;/td&gt;
+&lt;td&gt;텍스트 기반&lt;/td&gt;
+&lt;td&gt;바이너리 프레임&lt;/td&gt;
+&lt;td&gt;바이너리 프레임&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;멀티플렉싱&lt;/td&gt;
+&lt;td&gt;지원하지 않음&lt;/td&gt;
+&lt;td&gt;지원&lt;/td&gt;
+&lt;td&gt;지원&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TLS 사용&lt;/td&gt;
+&lt;td&gt;선택 가능&lt;/td&gt;
+&lt;td&gt;일반적인 브라우저 환경에서 사용&lt;/td&gt;
+&lt;td&gt;QUIC에 TLS 1.3 통합&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;주요 특징&lt;/td&gt;
+&lt;td&gt;지속 연결&lt;/td&gt;
+&lt;td&gt;헤더 압축, 멀티플렉싱&lt;/td&gt;
+&lt;td&gt;연결 수립 개선, 스트림별 손실 처리&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;HTTP/2 자체가 TLS를 필수로 요구하는 것은 아니지만, 일반적인 웹 브라우저에서는 HTTPS를 통해 HTTP/2를 사용한다.&lt;/p&gt;
+&lt;p&gt;HTTP/3는 QUIC을 사용하며 TLS 1.3을 통합하고 있기 때문에 기존 HTTP/1.1, HTTP/2와 연결 구조가 다르다.&lt;/p&gt;
+&lt;h2 id=&quot;9-HTTPS를-사용하면-모든-데이터가-안전할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#9-HTTPS%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%A9%B4-%EB%AA%A8%EB%93%A0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EC%95%88%EC%A0%84%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;9 HTTPS를 사용하면 모든 데이터가 안전할까 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;9. HTTPS를 사용하면 모든 데이터가 안전할까?&lt;/h2&gt;
+&lt;p&gt;HTTPS를 사용한다고 해서 모든 보안 문제가 해결되는 것은 아니다.&lt;/p&gt;
+&lt;p&gt;TLS는 주로 통신 구간을 보호한다.&lt;/p&gt;
+&lt;p&gt;예를 들어 HTTPS로 전달된 데이터도 서버에서 복호화한 이후에는 애플리케이션의 처리 방식에 따라 노출될 수 있다.&lt;/p&gt;
+&lt;p&gt;또한 다음과 같은 문제는 HTTPS만으로 해결할 수 없다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL Injection, XSS와 같은 애플리케이션 취약점&lt;/li&gt;
+&lt;li&gt;서버 내부에서 발생하는 민감 정보 유출&lt;/li&gt;
+&lt;li&gt;잘못된 인증 및 인가 처리&lt;/li&gt;
+&lt;li&gt;로그에 비밀번호나 토큰을 기록하는 문제
+그리고 HTTPS를 사용하더라도 IP 주소나 일부 연결 메타데이터는 네트워크에서 관찰할 수 있다. DNS 조회 방식이나 ECH(Encrypted ClientHello) 지원 여부에 따라 접속하려는 도메인 정보가 노출될 수도 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;따라서 HTTPS는 서비스 보안의 기본 요소이지만, 서비스 전체의 보안을 보장하는 것은 아니다.&lt;/p&gt;
+&lt;h2 id=&quot;10-마무리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#10-%EB%A7%88%EB%AC%B4%EB%A6%AC&quot; aria-label=&quot;10 마무리 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;10. 마무리&lt;/h2&gt;
+&lt;p&gt;HTTP와 HTTPS는 모두 클라이언트와 서버가 데이터를 주고받기 위한 HTTP 프로토콜을 사용한다.&lt;/p&gt;
+&lt;p&gt;차이는 통신 구간에서 데이터를 어떻게 보호하는지에 있다.&lt;/p&gt;
+&lt;p&gt;HTTP는 별도의 보안 계층이 없다면 데이터를 평문으로 전달하지만, HTTPS는 TLS를 이용해 데이터의 기밀성과 무결성을 보호하고 통신 상대를 인증한다.&lt;/p&gt;
+&lt;p&gt;특히 HTTPS를 이해할 때는 다음 세 가지를 구분하는 것이 중요하다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;HTTP는 요청과 응답의 의미와 형식을 정의한다.&lt;/li&gt;
+&lt;li&gt;TLS는 통신 상대의 인증과 데이터 암호화를 담당한다.&lt;/li&gt;
+&lt;li&gt;TCP 또는 QUIC은 데이터를 전송하기 위한 기반을 제공한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;실제 백엔드 서비스에서는 로드 밸런서나 리버스 프록시에서 TLS를 종료하고 내부 애플리케이션 서버로 HTTP 요청을 전달하는 구성도 흔히 사용한다.&lt;/p&gt;
+&lt;p&gt;따라서 HTTPS를 이해하는 것은 단순한 웹 보안 지식을 넘어, 실제 서버의 네트워크 아키텍처를 설계하고 운영하는 데에도 도움이 된다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;참고-자료&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고 자료 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;참고 자료&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc9110.html&quot;&gt;RFC 9110 — HTTP Semantics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc8446.html&quot;&gt;RFC 8446 — TLS 1.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc9113.html&quot;&gt;RFC 9113 — HTTP/2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc9114.html&quot;&gt;RFC 9114 — HTTP/3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[InnoDB와 ACID]]></title><description><![CDATA[ACID란 무엇인가 ACID는 데이터베이스 신뢰성을 위한 네 가지 핵심 속성, 즉 Atomicity(원자성), Consistency(일관성), Isolation(격리성), Durability(지속성)을 말합니다. MySQL…]]></description><link>https://kibeom-kim.github.io/mysql-innodb-acid/</link><guid isPermaLink="false">https://kibeom-kim.github.io/mysql-innodb-acid/</guid><pubDate>Mon, 08 Sep 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;ACID란-무엇인가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ACID%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80&quot; aria-label=&quot;ACID란 무엇인가 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;ACID란 무엇인가&lt;/h2&gt;
 &lt;p&gt;ACID는 데이터베이스 신뢰성을 위한 네 가지 핵심 속성, 즉 Atomicity(원자성), Consistency(일관성), Isolation(격리성), Durability(지속성)을 말합니다. MySQL의 스토리지 엔진 중 하나인 InnoDB 엔진에서 어떻게 ACID를 지원하는지 알아보겠습니다.&lt;/p&gt;
 &lt;h2 id=&quot;InnoDB-구조-개요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#InnoDB-%EA%B5%AC%EC%A1%B0-%EA%B0%9C%EC%9A%94&quot; aria-label=&quot;InnoDB 구조 개요 permalink&quot; class=&quot;heading-anchor before&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;InnoDB 구조 개요&lt;/h2&gt;
 &lt;p&gt;InnoDB는 Memory, MyISAM과 더불어 MySQL의 대표적인 트랜잭션 스토리지 엔진입니다.
